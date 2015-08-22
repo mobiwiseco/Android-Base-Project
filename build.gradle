@@ -3,17 +3,63 @@
 buildscript {
   repositories {
     jcenter()
+    mavenCentral()
+    mavenLocal()
   }
   dependencies {
     classpath 'com.android.tools.build:gradle:1.3.0'
+    //Gradle plugin to discover dependency updates
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.11.3'
 
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
   }
 }
 
+apply plugin: 'com.github.ben-manes.versions'
+
 allprojects {
   repositories {
     jcenter()
+    mavenCentral()
+    mavenLocal()
   }
+}
+
+ext {
+  preDexEnabled = 'true'.equals(System.getProperty('pre-dex', 'true'))
+
+  versionMajor = 0
+  versionMinor = 1
+  versionPatch = 0
+  versionBuild = 0
+
+  buildToolsVersion = '23.0.0'
+  compileSdkVersion = 23
+  targetSdkVersion = 23
+  minSdkVersion = 9
+
+  supportLibVersion = '23.0.0'
+  butterknifeVersion = '7.0.1'
+  okhttpLibVersion = '2.4.0'
+  playServicesVersion = '7.8.0'
+  stethoVersion = '1.1.1'
+
+  //supportLib
+  supportLib = "com.android.support:support-v4:$supportLibVersion"
+  supportLibAppCompat = "com.android.support:appcompat-v7:$supportLibVersion"
+  supportLibDesign = "com.android.support:design:$supportLibVersion"
+  supportLibRecyclerview = "com.android.support:recyclerview-v7:$supportLibVersion"
+  supportLibCardview = "com.android.support:cardview-v7:$supportLibVersion"
+
+  //playServices
+  playServicesAnalytics = "com.google.android.gms:play-services-analytics:$playServicesVersion"
+
+  butterKnife = "com.jakewharton:butterknife:$butterknifeVersion"
+
+  versionCode = versionMajor * 1000000 + versionMinor * 10000 + versionPatch * 100 + versionBuild
+  versionName = "${versionMajor}.${versionMinor}.${versionPatch}"
+
+  gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
+  buildTime = new Date().format("yyyy-MM-dd'T'HH:mm'Z'", TimeZone.getTimeZone("UTC"))
 }

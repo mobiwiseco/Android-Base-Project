@@ -1,11 +1,12 @@
-package co.mobiwise.android.baseproject;
+package co.mobiwise.android.baseproject.ui.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import co.mobiwise.android.baseproject.R;
+
+public class MainActivity extends _BaseActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
