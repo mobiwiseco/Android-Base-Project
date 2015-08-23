@@ -3,6 +3,8 @@ package co.mobiwise.android.baseproject.ui.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import co.mobiwise.android.baseproject.utils.BusUtil;
+
 public abstract class _BaseFragment extends Fragment {
 
 
@@ -19,6 +21,7 @@ public abstract class _BaseFragment extends Fragment {
   @Override
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
+    BusUtil.BUS.register(this);
   }
 
   @Override
@@ -54,6 +57,10 @@ public abstract class _BaseFragment extends Fragment {
   @Override
   public void onDestroy() {
     super.onDestroy();
+    try {
+      BusUtil.BUS.unregister(this);
+    } catch (Exception e) {
+    }
   }
 
   private void saveStateToArguments() {
