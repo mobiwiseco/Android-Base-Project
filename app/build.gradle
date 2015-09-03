@@ -112,4 +112,6 @@ dependencies {
   //facebook
   compile "com.facebook.stetho:stetho:${rootProject.ext.stethoVersion}"
   compile "com.facebook.stetho:stetho-okhttp:${rootProject.ext.stethoVersion}"
+
+  compile 'com.afollestad:material-dialogs:0.7.7.0'
 }
