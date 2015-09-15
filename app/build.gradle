@@ -20,7 +20,7 @@ android {
 
   defaultConfig {
 
-    applicationId "com.vodi.android"
+    applicationId "co.mobiwise.android.baseproject"
 
     minSdkVersion rootProject.ext.minSdkVersion
     targetSdkVersion rootProject.ext.targetSdkVersion
